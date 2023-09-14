@@ -2,6 +2,6 @@
 
 kill-line-arboard ()
 {
-    # arboard に文字列を渡す
-    # 文字列を削除する
+    zle kill-line
+    rust-script ./main.rs $CUTBUFFER
 }

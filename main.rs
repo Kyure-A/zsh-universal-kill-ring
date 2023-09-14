@@ -6,16 +6,11 @@
 //! ```
 
 use arboard::Clipboard;
-// use proconio::input;
+use std::env;
 
 fn main() {
-    let text: String = {
-	let mut text = String::new();
-	std::io::stdin().read_line(&mut text).unwrap();
-	
-	text.trim_end().to_owned()
-    };
-    
+    let args: Vec<String> = env::args().collect();
+    let text: &String = &args[1]; // ここ 0-indexed じゃないの罠すぎるだろ
     let mut clipboard = Clipboard::new().unwrap();
     clipboard.set_text(text).unwrap();
 }
