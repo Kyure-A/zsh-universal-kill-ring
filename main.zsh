@@ -1,18 +1,16 @@
 #!/usr/bin/env zsh -xeu
 
+SCRIPT_DIR=${0%/*}
+
 copy-line-as-kill ()
 {
     zle kill-line
-    path=$(dirname $0)
-    exec=$path/copy.rs
-    rust-script $exec $CUTBUFFER
+    rust-script $SCRIPT_DIR/copy.rs $CUTBUFFER
 }
 
 paste-as-yank ()
 {
-    path=$(dirname $0)
-    exec=$path/paste.rs
-    rust-script $exec
+    rust-script $SCRIPT_DIR/paste.rs
 }
 
 zle -N copy-line-as-kill
