@@ -1,11 +1,19 @@
 #!/usr/bin/env zsh -xeu
 
-kill-line-arboard ()
+copy-line-as-kill ()
 {
     zle kill-line
-    path="$(dirname "$0")"
-    exec="$path/main.rs"
+    path=$(dirname $0)
+    exec=$path/copy.rs
     rust-script $exec $CUTBUFFER
 }
 
-zle -N kill-line-arboard
+paste-as-yank ()
+{
+    path=$(dirname $0)
+    exec=$path/paste.rs
+    rust-script $exec
+}
+
+zle -N copy-line-as-kill
+zle -N paste-as-yank
