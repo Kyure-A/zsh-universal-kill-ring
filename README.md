@@ -9,5 +9,6 @@ Some environments do not have pbcopy or xsel (default Ubuntu does). We have crea
 It can be installed with any zsh plugin manager, or cloned and loaded with source. afterwards, add the following code to your `.zshrc`.
 
 ```zsh
-bindkey '^k' kill-line-arboard
+bindkey '^k' copy-line-as-kill
+bindkey '^y' paste-as-yank
 ```
