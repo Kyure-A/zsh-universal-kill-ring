@@ -1,4 +1,4 @@
-# kill-ring.zsh
+# universal-kill-ring.zsh
 ## Dependency
 - [rust-script](https://rust-script.org)
 
@@ -12,3 +12,5 @@ It can be installed with any zsh plugin manager, or cloned and loaded with sourc
 bindkey '^k' copy-line-as-kill
 bindkey '^y' paste-as-yank
 ```
+
+Enjoy an Emacs-like kill-ring experience! (The first time you install this, this is slow because of compile, but after that this is stress-free and fast).
