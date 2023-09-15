@@ -2,7 +2,6 @@
 //! ```cargo
 //! [dependencies]
 //! arboard = "3.2.1"
-//! proconio = "0.4.5"
 //! ```
 
 use arboard::Clipboard;
@@ -14,7 +13,7 @@ fn main() {
     if args.len() < 2 {
 	process::exit(0);
     }
-    let text: &String = &args[1]; // ここ 0-indexed じゃないの罠すぎるだろ
+    let text: &String = &args[1];
     let mut clipboard = Clipboard::new().unwrap();
     clipboard.set_text(text).unwrap();
 }
