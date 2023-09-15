@@ -5,12 +5,12 @@ SCRIPT_DIR=${0%/*}
 copy-line-as-kill ()
 {
     zle kill-line
-    rust-script $SCRIPT_DIR/copy.rs $CUTBUFFER
+    rust-script $SCRIPT_DIR/src/main.rs copy $CUTBUFFER
 }
 
 paste-as-yank ()
 {
-    rust-script $SCRIPT_DIR/paste.rs
+    rust-script $SCRIPT_DIR/src/main.rs paste
 }
 
 zle -N copy-line-as-kill
