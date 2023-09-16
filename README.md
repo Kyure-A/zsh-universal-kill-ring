@@ -15,6 +15,11 @@ bindkey '^y' paste-as-yank
 
 Enjoy an Emacs-like kill-ring experience! (The first time you install this, this is slow because of compile, but after that this is stress-free and fast).
 
+## Environment variable
+``` zsh
+$UNIKRHIST
+```
+This environment variable specifies the file that stores the kill-ring history (UNIversal Kill-Ring HISTory).
 
 ## Todo
 - [x] Copy
