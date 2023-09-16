@@ -17,7 +17,7 @@ fn make_history(text: &String) -> std::io::Result<()> {
     let history_path = std::path::Path::new(&history_str).expand_home().unwrap();
     
     let output = std::fs::OpenOptions::new()
-	.write(true)
+	.append(true)
         .create(true)
         .open(history_path);
     
