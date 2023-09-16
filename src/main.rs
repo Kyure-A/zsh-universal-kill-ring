@@ -4,6 +4,9 @@
 //! arboard = "3.2.1"
 //! dialoguer = { version = "0.10.4", features = ["fuzzy-select"] }
 //! home-dir = "0.1.0"
+//! nix = "0.20.2"
+//! [dev-dependencies]
+//! nix = "0.20.2"
 //! ```
 
 use arboard::Clipboard;
@@ -62,7 +65,7 @@ fn yank_pop() -> () {
         .default(0)
         .interact()
         .unwrap();
-
+    
     print!("{}", histories[selector]);
 }
 
@@ -79,7 +82,6 @@ fn main () -> () {
 	let text: &String = &args[2];
 	copy(text);
 	make_history(text).unwrap();
-	process::exit(0);
     }
 
     else if command == "yank" && args.len() == 2 {
