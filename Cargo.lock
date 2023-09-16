@@ -205,13 +205,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bc0000e42512c92e31c2252315bda326620a4e034105e900c98ec492fa077b3e"
 
 [[package]]
-name = "kill-ring-zsh"
-version = "0.1.0"
-dependencies = [
- "arboard",
-]
-
-[[package]]
 name = "libc"
 version = "0.2.148"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -466,6 +459,13 @@ name = "unicode-ident"
 version = "1.0.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b"
+
+[[package]]
+name = "universal-kill-ring"
+version = "1.0.0"
+dependencies = [
+ "arboard",
+]
 
 [[package]]
 name = "weezl"

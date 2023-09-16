@@ -27,13 +27,13 @@ fn main () {
     
     let command: &String = &args[1];
 
-    if command == "copy" {
+    if command == "copy" && args.len() == 3 {
 	let text: &String = &args[2];
 	copy(text);
 	process::exit(0);
     }
 
-    else if command == "paste" {
+    else if command == "paste" && args.len() == 2{
 	paste();
 	process::exit(0);
     }
