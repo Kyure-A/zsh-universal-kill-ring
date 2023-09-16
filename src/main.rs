@@ -2,7 +2,7 @@
 //! ```cargo
 //! [dependencies]
 //! arboard = "3.2.1"
-//! dialoguer = "0.10.4"
+//! dialoguer = { version = "0.10.4", features = ["fuzzy-select"] }
 //! ```
 
 use arboard::Clipboard;
