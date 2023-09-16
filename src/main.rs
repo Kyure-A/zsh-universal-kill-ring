@@ -10,7 +10,7 @@ use dialoguer::{theme::ColorfulTheme, FuzzySelect};
 use std::{process, io::Write};
 use std::io::prelude::*;
 
-const HISTORY_PATH: &str = "./history.json";
+const HISTORY_PATH: &str = "./kill-ring";
 
 fn make_history(text: &String) -> std::io::Result<()> {
     let output: std::fs::File = std::fs::OpenOptions::new()
