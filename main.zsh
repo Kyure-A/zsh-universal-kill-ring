@@ -10,8 +10,14 @@ copy-line-as-kill ()
 
 paste-as-yank ()
 {
-    rust-script $SCRIPT_DIR/src/main.rs paste
+    rust-script $SCRIPT_DIR/src/main.rs yank
+}
+
+paste-as-yank-pop ()
+{
+    rust-script $SCRIPT_DIR/src/main.rs yank-pop
 }
 
 zle -N copy-line-as-kill
 zle -N paste-as-yank
+zle -N paste-as-yank-pop
