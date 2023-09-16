@@ -13,12 +13,12 @@ use std::io::prelude::*;
 fn make_history(text: &String) -> std::io::Result<()> {
     let history_path = std::env::var("UNIKR_HIST").unwrap_or("~/unikrhist".to_string());
     
-    let output: std::fs::File = std::fs::OpenOptions::new()
+    let output = std::fs::OpenOptions::new()
+        .read(true)
 	.write(true)
         .create(true)
-        .open(history_path)
-        .unwrap();
-    let mut writer = std::io::BufWriter::new(output);
+        .open(history_path);
+    let mut writer = std::io::BufWriter::new(output.unwrap());
     writer.write_all(text.as_bytes())?;
     writer.write_all(b"\n")?;
 
