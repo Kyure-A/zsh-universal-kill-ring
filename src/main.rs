@@ -11,8 +11,7 @@ use std::{process, io::Write};
 use std::io::prelude::*;
 
 fn make_history(text: &String) -> std::io::Result<()> {
-    let mut history_path = std::env::current_dir()?;
-    history_path.push("kill-ring");
+    let history_path = std::env::var("UNIKR_HIST").unwrap_or("~/unikrhist".to_string());
     
     let output: std::fs::File = std::fs::OpenOptions::new()
 	.write(true)
@@ -27,8 +26,7 @@ fn make_history(text: &String) -> std::io::Result<()> {
 }
 
 fn get_history() -> std::io::Result<Vec<String>> {
-    let mut history_path = std::env::current_dir()?;
-    history_path.push("kill-ring");
+    let history_path = std::env::var("UNIKR_HIST").unwrap_or("~/unikrhist".to_string());
     
     let mut result: Vec<String> = Vec::new();
     let file = std::fs::File::open(history_path)?;
