@@ -3,21 +3,24 @@
 //! [dependencies]
 //! arboard = "3.2.1"
 //! dialoguer = { version = "0.10.4", features = ["fuzzy-select"] }
+//! home-dir = "0.1.0"
 //! ```
 
 use arboard::Clipboard;
 use dialoguer::{theme::ColorfulTheme, FuzzySelect};
 use std::{process, io::Write};
 use std::io::prelude::*;
+use home_dir::*;
 
 fn make_history(text: &String) -> std::io::Result<()> {
-    let history_path = std::env::var("UNIKR_HIST").unwrap_or("~/unikrhist".to_string());
+    let history_str = std::env::var("UNIKRHIST").unwrap_or("~/unikrhist".to_string());
+    let history_path = std::path::Path::new(&history_str).expand_home().unwrap();
     
     let output = std::fs::OpenOptions::new()
-        .read(true)
 	.write(true)
         .create(true)
         .open(history_path);
+    
     let mut writer = std::io::BufWriter::new(output.unwrap());
     writer.write_all(text.as_bytes())?;
     writer.write_all(b"\n")?;
@@ -26,7 +29,8 @@ fn make_history(text: &String) -> std::io::Result<()> {
 }
 
 fn get_history() -> std::io::Result<Vec<String>> {
-    let history_path = std::env::var("UNIKR_HIST").unwrap_or("~/unikrhist".to_string());
+    let history_str = std::env::var("UNIKRHIST").unwrap_or("~/unikrhist".to_string());
+    let history_path = std::path::Path::new(&history_str).expand_home().unwrap();
     
     let mut result: Vec<String> = Vec::new();
     let file = std::fs::File::open(history_path)?;
