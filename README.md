@@ -19,5 +19,5 @@ Enjoy an Emacs-like kill-ring experience! (The first time you install this, this
 ## Todo
 - [x] Copy
 - [x] Paste
-  - [ ] Search and paste from history
-- [ ] History in json format 
+  - [ ] Search and paste from history (incomplete)
+- [x] History
