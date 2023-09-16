@@ -47,6 +47,18 @@ fn get_history() -> std::io::Result<Vec<String>> {
     Ok(result)
 }
 
+fn show_history() -> String {
+    let histories: Vec<String> = get_history().unwrap();
+    let selector = FuzzySelect::with_theme(&ColorfulTheme::default())
+        .with_prompt("kill-ring")
+	.items(&histories)
+        .default(0)
+        .interact()
+        .unwrap();
+    
+    return histories[selector].clone();
+}
+
 fn copy(text: &String) -> () {
     let mut clipboard = Clipboard::new().unwrap();
     clipboard.set_text(text).unwrap();
@@ -58,15 +70,8 @@ fn yank() -> () {
 }
 
 fn yank_pop() -> () {
-    let histories: Vec<String> = get_history().unwrap();
-    let selector = FuzzySelect::with_theme(&ColorfulTheme::default())
-        .with_prompt("kill-ring")
-	.items(&histories)
-        .default(0)
-        .interact()
-        .unwrap();
-    
-    print!("{}", histories[selector]);
+    let clipboard = show_history();
+    print!("{}", clipboard);
 }
 
 fn main () -> () {
