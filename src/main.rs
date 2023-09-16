@@ -10,13 +10,14 @@ use dialoguer::{theme::ColorfulTheme, FuzzySelect};
 use std::{process, io::Write};
 use std::io::prelude::*;
 
-const HISTORY_PATH: &str = "./kill-ring";
-
 fn make_history(text: &String) -> std::io::Result<()> {
+    let mut history_path = std::env::current_dir()?;
+    history_path.push("kill-ring");
+    
     let output: std::fs::File = std::fs::OpenOptions::new()
 	.write(true)
         .create(true)
-        .open(HISTORY_PATH)
+        .open(history_path)
         .unwrap();
     let mut writer = std::io::BufWriter::new(output);
     writer.write_all(text.as_bytes())?;
@@ -26,8 +27,11 @@ fn make_history(text: &String) -> std::io::Result<()> {
 }
 
 fn get_history() -> std::io::Result<Vec<String>> {
+    let mut history_path = std::env::current_dir()?;
+    history_path.push("kill-ring");
+    
     let mut result: Vec<String> = Vec::new();
-    let file = std::fs::File::open(HISTORY_PATH)?;
+    let file = std::fs::File::open(history_path)?;
     let histories = std::io::BufReader::new(file);
 
     for history in histories.lines() {
