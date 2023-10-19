@@ -1,4 +1,4 @@
-# universal-kill-ring.zsh
+# zsh-universal-kill-ring
 ## Dependency
 - [rust-script](https://rust-script.org)
 
