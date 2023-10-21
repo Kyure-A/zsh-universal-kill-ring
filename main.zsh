@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh -xeu
 
-SCRIPT_DIR=${0%/*}
+SCRIPT_DIR=${0:a:h}
 
 copy-line-as-kill ()
 {
