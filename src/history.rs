@@ -1,4 +1,5 @@
 //! ## history
+//! Module that provides a function that does something by referencing a history file residing in $UNIKRHIST (~/unikrhist by default).
 
 pub mod history {
     use std::fs::File;

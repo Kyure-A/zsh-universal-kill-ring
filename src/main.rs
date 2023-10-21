@@ -1,31 +1,33 @@
 //! # main
 
-mod history;
 mod kill_ring;
+mod history;
+mod judge;
+use judge::judge::{is_yank, is_yank_pop};
+
 use crate::kill_ring::kill_ring::*;
-use std::process;
+use crate::judge::judge::*;
+use std::process::exit;
 
 fn main () -> () {
     let args: Vec<String> = std::env::args().collect();
-
-    if args.len() < 2 {
-	process::exit(1);
-    }
     
     let command: &String = &args[1];
 
-    if command == "copy" && args.len() == 3 {
+    if is_copy(command, &args) {
 	let text: &String = &args[2];
 	kill(text);
     }
 
-    else if command == "yank" && args.len() == 2 {
+    if is_yank(command, &args) {
 	yank();
-	process::exit(0);
+	exit(0);
     }
 
-    else if command == "yank-pop" && args.len() == 2 {
+    if is_yank_pop(command, &args) {
 	yank_pop();
-	process::exit(0);
+	exit(0);
     }
+
+    exit(1);
 }

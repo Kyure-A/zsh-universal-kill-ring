@@ -1,4 +1,5 @@
 //! kill_ring
+//! Module providing the functionality of kill-ring itself.
 
 pub mod kill_ring {
     use crate::history::history::*;
@@ -18,7 +19,7 @@ pub mod kill_ring {
 	let mut clipboard = Clipboard::new().unwrap();
 	print!("{}", clipboard.get_text().unwrap());
     }
-
+    
     pub fn yank_pop() -> () {
 	let clipboard = show_history();
 	print!("{}", clipboard);
