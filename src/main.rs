@@ -16,7 +16,7 @@ use std::io::prelude::*;
 use home_dir::*;
 
 fn make_history(text: &String) -> std::io::Result<()> {
-    let history_str = std::env::var("UNIKRHIST").unwrap_or("~/unikrhist".to_string());
+    let history_str = std::env::var("UNIKRHIST").unwrap_or("~/.unikrhist".to_string());
     let history_path = std::path::Path::new(&history_str).expand_home().unwrap();
     
     let output = std::fs::OpenOptions::new()
@@ -32,7 +32,7 @@ fn make_history(text: &String) -> std::io::Result<()> {
 }
 
 fn get_history() -> std::io::Result<Vec<String>> {
-    let history_str = std::env::var("UNIKRHIST").unwrap_or("~/unikrhist".to_string());
+    let history_str = std::env::var("UNIKRHIST").unwrap_or("~/.unikrhist".to_string());
     let history_path = std::path::Path::new(&history_str).expand_home().unwrap();
     
     let mut result: Vec<String> = Vec::new();
